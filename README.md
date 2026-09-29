@@ -25,7 +25,7 @@
 
 ## HOW TO USE?
 ```sh
-git clone
+git clone https://github.com/suraj-repositories/nuxt-crud-app.git
 
 npm install
 
