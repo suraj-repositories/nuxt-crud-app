@@ -1,75 +1,42 @@
-# Nuxt Minimal Starter
+# Nuxt CRUD App 
+ A simple crud application with all the basic features you have to know.
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Features
+  1. Image Uplaod
+  2. Password encoder
+  3. Pagination links
+  4. Flash messages
+  5. Error pages to handle error code such as 404, 500 etc.
 
-## Setup
+## Technolgies Used 
+  1. Vue
+  2. Next.js 
+  3. MySQL database
+  4. Node-express api's
+  5. Developed in Visual studio code
+  
+## Screenshots 
+<div style="display: flex;flex-direction: column; grid-gap: 10px;">
+    <div style="display: flex; grid-gap: 10px;">
+        <img src="screenshots/image.png" alt="screenshots" width="100%" style="border: 2px solid lightgreen"/>
+    </div>
+</div>
+<br>
 
-Make sure to install dependencies:
+## HOW TO USE?
+```sh
+git clone
 
-```bash
-# npm
 npm install
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
+# make sure api server is up and running
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
 
-Build the application for production:
+## Contributing
 
-```bash
-# npm
-npm run build
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
 
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Please make sure to update tests as appropriate.
