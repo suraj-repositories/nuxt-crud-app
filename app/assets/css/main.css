@@ -1,12 +1,10 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
-:root{
-    --grey : rgba(216, 216, 216, 0.76);
-    --light : white;
+:root {
+    --grey: rgba(216, 216, 216, 0.76);
+    --light: white;
     --primary: rgb(107, 87, 124);
 }
-
 
 body {
     font-family: "Poppins", sans-serif;
@@ -14,25 +12,41 @@ body {
     font-style: normal;
     background: var(--grey);
 
-  }
-  
-.card{
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: black;
+}
+
+a {
+    color: var(--primary);
+}
+
+.card {
     width: 95vw;
     max-width: 65rem;
     border-radius: 15px;
     font-size: smaller;
 }
-.scroll-box{
+
+.scroll-box {
     overflow-y: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
     max-height: 400px;
 }
-.scroll-box::-webkit-scrollbar{
-	height: 0;
-	width: 0;
+
+.scroll-box::-webkit-scrollbar {
+    height: 0;
+    width: 0;
 }
-.background-flexbox{
+
+.background-flexbox {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,42 +54,46 @@ body {
     width: 100vw;
     min-width: fit-content;
 }
-.background-flexbox .card{
+
+.background-flexbox .card {
     min-width: fit-content;
 }
 
-.action-btns button{
+.action-btns button {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
 }
 
 
-.action-btns button .bx{
+.action-btns button .bx {
     font-size: 33px;
 }
-.action-btns a{
+
+.action-btns a {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
 }
-.action-btns a .bx{
+
+.action-btns a .bx {
     font-size: 33px;
 }
-.action-btns{
+
+.action-btns {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.background-flexbox table td .user{
+.background-flexbox table td .user {
     display: flex;
     width: 100%;
     height: 100%;
     align-items: center;
 }
 
-.background-flexbox table td .user img{
+.background-flexbox table td .user img {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -88,18 +106,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+
 }
 
-.update-profile-pic img{
+.update-profile-pic img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     margin-right: 5px;
 }
 
-@media screen and(max-width=600px){
-    .action-btns{
+@media screen and(max-width=600px) {
+    .action-btns {
         flex-direction: column;
     }
 }

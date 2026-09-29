@@ -15,13 +15,13 @@ const form = reactive({
     name: '',
     dob: '',
     email: '',
-    password: '',
+    password: ''
 })
 
 const selectedImage = ref<File | null>(null)
+const userImage = ref('')
 const loading = ref(true)
 const submitting = ref(false)
-let userImage = ref("");
 
 const { data: response, error } = await getUser(userId)
 
@@ -32,17 +32,23 @@ if (error.value) {
     form.name = user.name
     form.dob = user.dob
     form.email = user.email
-    userImage = user.image
+    userImage.value = user.image || ''
 }
 
 loading.value = false
 
 const handleImageChange = (event: Event) => {
     const target = event.target as HTMLInputElement
-    selectedImage.value = target.files?.[0] ?? null
+    const file = target.files?.[0] ?? null
+
+    selectedImage.value = file
+
+    if (file) {
+        userImage.value = URL.createObjectURL(file)
+    }
 }
 
-const submitForm = async () => { 
+const submitForm = async () => {
     submitting.value = true
 
     try {
@@ -60,11 +66,11 @@ const submitForm = async () => {
                 await uploadUserImage(userId, formData)
             }
 
-            showSuccess("User updated successfully!");
+            showSuccess('User updated successfully!')
             await navigateTo('/users')
         }
-    } catch (err: any) { 
-        showError(err?.data?.message || 'Failed to update user.');
+    } catch (err: any) {
+        showError(err?.data?.message || 'Failed to update user.')
     } finally {
         submitting.value = false
     }
@@ -83,21 +89,18 @@ const handleImageError = (event: Event) => {
                 <NuxtLink to="/users">
                     <i class="bx bx-left-arrow-alt" />
                 </NuxtLink>
-
                 <u><b>Update User</b></u>
             </h3>
 
             <div v-if="loading" class="text-center py-4">
                 Loading user...
             </div>
- 
 
             <form v-else class="mt-3" @submit.prevent="submitForm">
                 <div class="mb-3">
                     <label for="full-name" class="form-label">
                         Full name <span class="text-danger">*</span>
                     </label>
-
                     <input id="full-name" v-model="form.name" type="text" class="form-control" name="name" required>
                 </div>
 
@@ -105,7 +108,6 @@ const handleImageError = (event: Event) => {
                     <label for="dob" class="form-label">
                         Date of birth <span class="text-danger">*</span>
                     </label>
-
                     <input id="dob" v-model="form.dob" type="date" class="form-control" name="dob" required>
                 </div>
 
@@ -113,9 +115,7 @@ const handleImageError = (event: Event) => {
                     <label for="email" class="form-label">
                         Email address <span class="text-danger">*</span>
                     </label>
-
                     <input id="email" v-model="form.email" type="email" class="form-control" name="email" required>
-
                     <div class="form-text">
                         We'll never share your email with anyone else.
                     </div>
@@ -125,7 +125,6 @@ const handleImageError = (event: Event) => {
                     <label for="password" class="form-label">
                         Password
                     </label>
-
                     <input id="password" v-model="form.password" type="password" class="form-control" name="password"
                         placeholder="Leave blank to keep current password">
                 </div>
@@ -134,10 +133,9 @@ const handleImageError = (event: Event) => {
                     <label for="image" class="form-label">
                         Profile picture
                     </label>
-
                     <div class="update-profile-pic">
                         <img :src="userImage || '/assets/images/default-user.png'" alt="profile picture"
-                                        @error="handleImageError">
+                            @error="handleImageError">
                         <input id="image" type="file" class="form-control" name="image" accept="image/*"
                             @change="handleImageChange">
                     </div>
@@ -147,8 +145,6 @@ const handleImageError = (event: Event) => {
                     {{ submitting ? 'UPDATING...' : 'UPDATE' }}
                 </button>
             </form>
-
-            <br>
         </div>
     </div>
 </template>
